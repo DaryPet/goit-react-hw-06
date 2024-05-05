@@ -1,22 +1,28 @@
 import css from "./Contacts.module.css";
 import { RiUser3Fill } from "react-icons/ri";
 import { BiSolidPhone } from "react-icons/bi";
+import { useDispatch } from "react-redux";
+import { deleteContact } from "../../redux/contactsSlice";
 
-export default function Contacts({ data: { id, name, number }, onDelete }) {
+export default function Contacts({ data }) {
+  const dispatch = useDispatch();
   return (
-    <div className={css.container} key={id}>
+    <div className={css.container} key={data.id}>
       <div className={css.data}>
         <p className={css.text}>
           <RiUser3Fill />
-          {name}
+          {data.name}
         </p>
         <p className={css.text}>
           <BiSolidPhone />
-          {number}
+          {data.number}
         </p>
       </div>
 
-      <button className={css.btn} onClick={() => onDelete(id)}>
+      <button
+        className={css.btn}
+        onClick={() => dispatch(deleteContact(data.id))}
+      >
         Delete
       </button>
     </div>

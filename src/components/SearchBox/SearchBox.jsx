@@ -1,14 +1,17 @@
 import css from "./SearchBox.module.css";
+import { useId } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { changeFilter, selectNameFilter } from "../../redux/filtersSlice";
+import { changeFilter } from "../../redux/filtersSlice";
+import { selectNameFilter } from "../../redux/selectors";
 
 export default function SearchBox() {
+  const id = useId();
   const nameFilter = useSelector(selectNameFilter);
   const dispatch = useDispatch();
 
-  const handleChange = (e) => {
-    dispatch(changeFilter(e.target.value));
-  };
+  // const handleChange = (e) => {
+  //   dispatch(changeFilter(e.target.value));
+  // };
 
   return (
     <div className={css.wrap}>
@@ -17,7 +20,10 @@ export default function SearchBox() {
         className={css.data}
         type="text"
         value={nameFilter}
-        onChange={handleChange}
+        id={id}
+        onChange={(e) => {
+          dispatch(changeFilter(e.target.value));
+        }}
       />
     </div>
   );

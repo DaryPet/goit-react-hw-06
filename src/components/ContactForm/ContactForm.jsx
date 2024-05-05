@@ -24,14 +24,13 @@ const ContactSchema = Yup.object().shape({
 
 export default function ContactForm() {
   const dispatch = useDispatch();
+  const nameFieldId = useId();
+  const telFieldId = useId();
 
   const handleSubmit = (values, actions) => {
     dispatch(addContact(values));
     actions.resetForm();
   };
-
-  const nameFieldId = useId();
-  const telFieldId = useId();
 
   return (
     <Formik
