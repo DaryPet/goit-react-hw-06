@@ -1,4 +1,4 @@
-import css from "./Contacts.module.css";
+import css from "./Contact.module.css";
 import { RiUser3Fill } from "react-icons/ri";
 import { BiSolidPhone } from "react-icons/bi";
 import { useDispatch } from "react-redux";
